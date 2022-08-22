@@ -1,14 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../components";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "..";
 import { Icon } from "@iconify/react";
+import HeaderContainer from "./Container";
 
 type MenuButtonType = {
   label: string;
   url: string;
 };
 
-export default function Header() {
+export function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const menuContent: MenuButtonType[] = [
     {
@@ -17,11 +19,11 @@ export default function Header() {
     },
     {
       label: "Sobre",
-      url: "/cart",
+      url: "/",
     },
     {
       label: "Tabela",
-      url: "/catalog",
+      url: "/list",
     },
     {
       label: "Fale conosco",
@@ -30,28 +32,23 @@ export default function Header() {
   ];
 
   return (
-    <div
-      style={{
-        backgroundImage: "url(/mustang_main.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        height: "calc(0.5*100vw)",
-        minHeight: "400px",
-        width: "100%",
-        paddingTop: "1rem",
-      }}
-    >
+    <HeaderContainer path={location.pathname}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           marginLeft: "2rem",
           marginRight: "2rem",
-          // width: "calc(100% - 4rem)",
         }}
       >
-        <img src="/carbon_logo.svg" />
+        <Icon
+          icon="carbon:logo-delicious"
+          style={{
+            height: "3rem",
+            width: "3rem",
+            color: "white",
+          }}
+        />
         {menuContent.map((item, index) => (
           <Button key={index} onClick={() => navigate(item.url)}>
             {item.label}
@@ -76,6 +73,6 @@ export default function Header() {
           />
         </div>
       </div>
-    </div>
+    </HeaderContainer>
   );
 }

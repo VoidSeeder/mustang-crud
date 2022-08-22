@@ -3,9 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import pages from "./pages";
 
-export default function AppRoutes() {
+type Props = {
+  children?: React.ReactNode;
+};
+
+export default function AppRoutes({ children }: Props) {
   return (
     <Router>
+      {children}
       <Routes>
         <Route path="/" element={<Home />} />
         {Object.keys(pages).map((key) => (

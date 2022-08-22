@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import designSystem from "../designSystem";
+import { Theme } from "../designSystem";
 
 interface Props {
   primary?: boolean;
-  theme?: typeof designSystem;
+  theme?: Theme;
 }
 
 export const Button = styled.button<Props>`

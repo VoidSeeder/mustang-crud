@@ -1,4 +1,3 @@
-import { Cart } from "./Cart";
-import { Catalog } from "./Catalog";
+import List from "./List";
 
-export default { Cart, Catalog };
+export default { List };
